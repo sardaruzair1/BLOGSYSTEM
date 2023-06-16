@@ -103,28 +103,26 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav">                     
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
+                        <a class="nav-link" href="{{route('userpage')}}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="no-sidebar.html">No Sidebar</a>
+                        <a class="nav-link" href="{{route('userpage')}}">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="single-post.html">Single Post</a>
+                        <a class="nav-link" href="{{route('userpage')}}">contact</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown
+                            Features
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{route('create_blog')}}">Create Blog</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                           
+                         
+                            
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">Disabled</a>
-                    </li>
+                   
                 </ul>
                 <div class="navbar-nav ml-auto">
                     @guest

@@ -28,7 +28,9 @@ class HomeController extends Controller
     }
     public function userpage(){
         $data = blog::all();
-        return view('blog.index',compact('data'));
+        $latestBlog = blog::latest()->first();
+        $blog = blog::latest()->take(3)->get();
+        return view('blog.index',compact('data','latestBlog','blog'));
     }
     public function product(){
         return view('blog.product');

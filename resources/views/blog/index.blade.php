@@ -1,17 +1,13 @@
-
 @extends('layouts.app')
 @section('content')
-    
-
-    
-   <!-- page-header -->
-   <header class="page-header"></header>
-   <!-- end of page header -->
+    <!-- page-header -->
+    <header class="page-header"></header>
+    <!-- end of page header -->
 
     <div class="container">
         <section>
             <div class="feature-posts">
-                <a href="single-post.html" class="feature-post-item">                       
+                <a href="single-post.html" class="feature-post-item">
                     <span>Featured Posts</span>
                 </a>
                 <a href="single-post.html" class="feature-post-item">
@@ -37,58 +33,58 @@
             <div class="page-content">
                 <div class="card">
                     <div class="card-header text-center">
-                        <h5 class="card-title">Voluptates Corporis Placeat</h5> 
-                        <small class="small text-muted">January 24 2019 
+                        <h5 class="card-title">{{ $latestBlog->title }}</h5>
+                        <small class="small text-muted">{{ $latestBlog->created_at }}
                             <span class="px-2">-</span>
                             <a href="#" class="text-muted">32 Comments</a>
                         </small>
                     </div>
                     <div class="card-body">
                         <div class="blog-media">
-                            <img src="assets/imgs/blog-6.jpg" alt="" class="w-100">
-                            <a href="#" class="badge badge-primary">#Salupt</a>     
-                        </div>  
-                        <p class="my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos saepe dolores et nostrum porro odit reprehenderit animi, est ratione fugit aspernatur ipsum. Nostrum placeat hic saepe voluptatum dicta ipsum beatae.</p>
+                            <img src="{{ url('uploads/blog/' . $latestBlog->image) }}" alt="" class="w-100">
+                            <a href="#" class="badge badge-primary">#Salupt</a>
+                        </div>
+                        <p class="my-3">{{ Str::words($latestBlog->content, 80, '...') }}</p>
                     </div>
-                    
+
                     <div class="card-footer d-flex justify-content-between align-items-center flex-basis-0">
                         <button class="btn btn-primary circle-35 mr-4"><i class="ti-back-right"></i></button>
-                        <a href="single-post.html" class="btn btn-outline-dark btn-sm">READ MORE</a>
+                        <a href="{{ route('blogdetail', $latestBlog->id) }}" class="btn btn-outline-dark btn-sm">READ
+                            MORE</a>
                         <a href="#" class="text-dark small text-muted">By : Joe Mitchell</a>
-                    </div>                  
+                    </div>
                 </div>
                 <hr>
-                <div class="row">  
+                <div class="row">
                     @foreach ($data as $item)
-                        
-                                       
-                    <div class="col-lg-6">
-                        <div class="card text-center mb-5">
-                            <div class="card-header p-0">                                   
-                                <div class="blog-media">
+                        <div class="col-lg-6">
+                            <div class="card text-center mb-5">
+                                <div class="card-header p-0">
+                                    <div class="blog-media">
 
-                                    
-                                    <img src="{{ url('uploads/blog/'.$item->image) }}" alt="" class="w-100">
-                                    <a href="#" class="badge badge-primary">#Placeat</a>        
-                                </div>  
+
+                                        <img src="{{ url('uploads/blog/' . $item->image) }}" alt="" class="w-100">
+                                        <a href="#" class="badge badge-primary">#Placeat</a>
+                                    </div>
+                                </div>
+                                <div class="card-body px-0">
+                                    <h5 class="card-title mb-2">{{ $item->title }}</h5>
+                                    <small class="small text-muted">January 20 2019
+                                        <span class="px-2">-</span>
+                                        <a href="#" class="text-muted">34 Comments</a>
+                                    </small>
+                                    <p class="my-2">{{ Str::words($item->content, 20, '...') }}
+                                    </p>
+                                </div>
+
+                                <div class="card-footer p-0 text-center">
+                                    <a href="{{ route('blogdetail', $item->id) }}"
+                                        cladivss="btn btn-outline-dark btn-sm">READ MORE</a>
+                                </div>
                             </div>
-                            <div class="card-body px-0">
-                                <h5 class="card-title mb-2">{{$item->title}}</h5>    
-                                <small class="small text-muted">January 20 2019 
-                                    <span class="px-2">-</span>
-                                    <a href="#" class="text-muted">34 Comments</a>
-                                </small>
-                                <p class="my-2">{{ Str::words($item->content, 20, '...') }}
-                                </p>
-                            </div>
-                            
-                            <div class="card-footer p-0 text-center">
-                                <a href="{{route('blogdetail',$item->id)}}" class="btn btn-outline-dark btn-sm">READ MORE</a>
-                            </div>                  
                         </div>
-                    </div>
-                    @endforeach 
-                   
+                    @endforeach
+
                 </div>
                 <button class="btn btn-primary btn-block my-4">Load More Posts</button>
             </div>
@@ -104,8 +100,9 @@
                     <a href="javascript:void(0)"><i class="ti-instagram"></i></a>
                     <a href="javascript:void(0)"><i class="ti-youtube"></i></a>
                 </div>
-                <p>Consectetur adipisicing elit Possimus tempore facilis dolorum veniam impedit nobis. Quia, soluta incidunt nesciunt dolorem reiciendis iusto.</p>
-                
+                <p>Consectetur adipisicing elit Possimus tempore facilis dolorum veniam impedit nobis. Quia, soluta incidunt
+                    nesciunt dolorem reiciendis iusto.</p>
+
 
                 <h6 class="sidebar-title mt-5 mb-4">Newsletter</h6>
                 <form action="">
@@ -138,7 +135,7 @@
                         <a href="#" class="figure-img">
                             <img src="assets/imgs/insta-2.jpg" alt="" class="w-100 m-0">
                         </a>
-                    </div>  
+                    </div>
                     <div class="col-4 p-1 figure">
                         <a href="#" class="figure-img">
                             <img src="assets/imgs/insta-3.jpg" alt="" class="w-100">
@@ -148,7 +145,7 @@
                         <a href="#" class="figure-img">
                             <img src="assets/imgs/insta-4.jpg" alt="" class="w-100 m-0">
                         </a>
-                    </div>  
+                    </div>
                     <div class="col-4 p-1 figure">
                         <a href="#" class="figure-img">
                             <img src="assets/imgs/insta-5.jpg" alt="" class="w-100">
@@ -158,8 +155,8 @@
                         <a href="#" class="figure-img">
                             <img src="assets/imgs/insta-6.jpg" alt="" class="w-100 m-0">
                         </a>
-                    </div>                          
-                </div>  
+                    </div>
+                </div>
 
                 <figure class="figure mt-5">
                     <a href="single-post.html" class="figure-img">
@@ -170,52 +167,33 @@
 
                 <h6 class="sidebar-title mt-5 mb-4">Popular Posts</h6>
                 <div class="card mb-4">
-                    <a href="single-post.html" class="overlay-link"></a>
-                    <div class="card-header p-0">                                   
+                    <a href="{{ route('blogdetail', $latestBlog->id) }}" class="overlay-link"></a>
+                    <div class="card-header p-0">
                         <div class="blog-media">
-                            <img src="assets/imgs/blog-6.jpg" alt="" class="w-100">
-                            <a href="#" class="badge badge-primary">#Lorem</a>      
-                        </div>  
+                            <img src="{{ url('uploads/blog/' . $latestBlog->image) }}" alt="" class="w-100">
+                            <a href="{{ route('blogdetail', $latestBlog->id) }}" class="badge badge-primary">#Lorem</a>
+                        </div>
                     </div>
                     <div class="card-body px-0">
-                        <h5 class="card-title mb-2">Corporis Placeat</h5>   
-                        <small class="small text-muted"><i class="ti-calendar pr-1"></i> January 24 2019
+                        <h5 class="card-title mb-2">{{ $latestBlog->title }}</h5>
+                        <small class="small text-muted"><i class="ti-calendar pr-1"></i> {{ $latestBlog->created_at }}
                         </small>
-                        <p class="my-2">consectetur adipisicing Cum veritatis minus iustorpo cupiditate voluptas ...</p>
-                    </div>      
+                        <p class="my-2">{{ Str::words($latestBlog->content, 10, '...') }}</p>
+                    </div>
                 </div>
+                @foreach ($blog as $data)
+                    <div class="media text-left mb-4">
+                        <a href="{{ route('blogdetail', $data->id) }}" class="overlay-link"></a>
+                        <img class="mr-3" src="{{ url('uploads/blog/' . $data->image) }}" width="100px" alt="Generic placeholder image">
+                        <div class="media-body">
+                            <h6 class="mt-0">{{$data->title}}</h6>
+                            <p class="mb-2">{{ Str::words($data->content, 6, '...') }}</p>
+                            <p class="text-muted small"><i class="ti-calendar pr-1"></i>{{$data->created_at}}</p>
+                        </div>
+                    </div>
+                @endforeach
 
-                <div class="media text-left mb-4">
-                    <a href="single-post.html" class="overlay-link"></a>
-                    <img class="mr-3" src="assets/imgs/blog-1.jpg" width="100px" alt="Generic placeholder image">
-                    <div class="media-body">
-                        <h6 class="mt-0">Nobis Mollitia</h6>
-                        <p class="mb-2"> deserunt quisqua...</p>
-                        <p class="text-muted small"><i class="ti-calendar pr-1"></i>  January 02 2019</p>
-                    </div>
-                </div>
-                <div class="media text-left mb-4">
-                    <a href="single-post.html" class="overlay-link"></a>
-                    <img class="mr-3" src="assets/imgs/blog-2.jpg" width="100px" alt="Generic placeholder image">
-                    <div class="media-body">
-                        <h6 class="mt-0">Officiis Laborum</6>
-                        <p class="mb-2"> deserunt quisqua...</p>                            
-                        <p class="text-muted small"><i class="ti-calendar pr-1"></i>  January 10 2019</p>
-                    </div>
-                </div>
-                <div class="media text-left mb-4">
-                    <a href="single-post.html" class="overlay-link"></a>
-                    <img class="mr-3" src="assets/imgs/blog-3.jpg" width="100px" alt="Generic placeholder image">
-                    <div class="media-body">
-                        <h6 class="mt-0">Sapiente fugit vero</h6>
-                        <p class="mb-2"> deserunt ard quisqua...</p>                        
-                        <p class="text-muted small"><i class="ti-calendar pr-1"></i>  January 04 2019</p>
-                    </div>
-                </div>  
-                <div class="ad-card d-flex text-center align-items-center justify-content-center">
-                    <span href="#" class="font-weight-bold">ADS</span>
-                </div>
-            </div>
+                          </div>
         </div>
     </div>
 
@@ -290,7 +268,4 @@
             </div>
         </a>
     </div>
-
-    
-
-    @endsection
+@endsection
